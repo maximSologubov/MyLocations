@@ -54,8 +54,8 @@ namespace MyLocationsNote
         {
             //Services
 
-            /*containerRegistry.RegisterInstance<ISettinngsManager>(Container.Resolve<SettingsManager>());
-            containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
+            containerRegistry.RegisterInstance<ISettinngsManager>(Container.Resolve<SettingsManager>());
+            /*containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
             containerRegistry.RegisterInstance<IDbService>(Container.Resolve<DbService>());
             containerRegistry.RegisterInstance<IRegistration>(Container.Resolve<Registration>());
             containerRegistry.RegisterInstance<IAuthorization>(Container.Resolve<Authorization>());*/

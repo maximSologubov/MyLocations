@@ -5,7 +5,7 @@ using Xamarin.Essentials;
 
 namespace MyLocationsNote.Services.Settings
 {
-    class SettingsManager
+    class SettingsManager : ISettinngsManager
     {
         public bool DarkTheme
         {

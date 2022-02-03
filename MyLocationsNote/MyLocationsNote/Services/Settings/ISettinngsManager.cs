@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyLocationsNote.Services.Settings
 {
-    interface ISettinngsManager
+    public interface ISettinngsManager
     {
         bool DarkTheme { get; set; }
     }
