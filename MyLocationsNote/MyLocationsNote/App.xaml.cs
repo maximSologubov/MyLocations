@@ -1,7 +1,10 @@
-﻿using Prism;
+﻿using MyLocationsNote.Services.Settings;
+using MyLocationsNote.Themes;
+using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,18 +19,18 @@ namespace MyLocationsNote
 
         #region --- Private fields
 
-       /* private ISettinngsManager _settinngsManager;
-        private IRepository repository;
+        private ISettinngsManager _settinngsManager;
+       /* private IRepository repository;
         private IDbService dbService;
         private IRegistration registration;
-        private IAuthorization authorizationService;/
+        private IAuthorization authorizationService;*/
 
         #endregion
 
         #region --- Properties ---
 
-        /*public ISettinngsManager SettingsManager => _settinngsManager ??= Container.Resolve<SettingsManager>();
-        public IRepository Repository => repository ??= Container.Resolve<Repository>();
+        public ISettinngsManager SettingsManager => _settinngsManager ??= Container.Resolve<SettingsManager>();
+        /*public IRepository Repository => repository ??= Container.Resolve<Repository>();
         public IDbService DbService => dbService ??= Container.Resolve<DbService>();
         public IRegistration Registration => registration ??= Container.Resolve<Registration>();
         public IAuthorization AuthorizationService => authorizationService ??= Container.Resolve<Authorization>();*/
@@ -72,12 +75,28 @@ namespace MyLocationsNote
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            ResourceLoader();
         }
         #endregion
 
         #region --- Private helpers ---
+        private void ResourceLoader()
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
 
-       
+            switch (SettingsManager.DarkTheme)
+            {
+                case false:
+                    mergedDictionaries.Add(new LightTheme());
+                    break;
+
+                case true:
+                    mergedDictionaries.Add(new DarkTheme());
+                    break;
+            }
+        }
+
         #endregion
     }
 }
